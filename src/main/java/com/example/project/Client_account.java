@@ -1,7 +1,12 @@
 package com.example.project;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.HashMap;
 
+@JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday", "gender", "phone", "email"})
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class Client_account {
     private static int total_accounts=0;
     private int client_id;
@@ -20,9 +25,9 @@ public class Client_account {
         this.birthday = birthday;
         this.gender = gender;
         this.phone = phone;
+        this.email=email;
         Addresses.put(address.getId(),address);
         total_accounts++;
-
     }
 
     @Override

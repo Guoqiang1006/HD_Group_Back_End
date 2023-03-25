@@ -28,13 +28,18 @@ public class Application {
     }
 
     @GetMapping("/account")//GetMapping示例2：浏览器输入http://localhost:8080/account?account_id=1可以看到传给前端的结果，这个无default value，根据用户编号查看对应用户信息
-    public String getClientById(@RequestParam(value = "account_id") int id) {
+    public String getClientStringById(@RequestParam(value = "account_id") int id) {
         return clients.get(id).toString();
     }
-    @GetMapping("/address/{id}")//GetMapping示例3：浏览器输入http://localhost:8080/address/1可以看到传给前端的结果。{}可以使变量id内嵌在网址中
+
+    @GetMapping("/account/{id}")//GetMapping示例3：浏览器输入http://localhost:8080/account/1可以看到传给前端的结果，这个无default value，根据用户编号查看对应用户信息
+    public ResponseEntity<Client_account> getClientById(@PathVariable int id) {
+        return ResponseEntity.ok(clients.get(id));//返回client对象转json
+    }
+    @GetMapping("/address/{id}")//GetMapping示例4：浏览器输入http://localhost:8080/address/1可以看到传给前端的结果。{}可以使变量id内嵌在网址中
     @ResponseBody//ResponseBody将对象转换为json格式，更方便数据对接
     public ResponseEntity<Object> getAddressById(@PathVariable int id) {
-        if (id < 0 || id > addresses.size()) {
+        if (id < 0 || id > addresses.size()) { //如果找不到，返回http错误404NOT_FOUND
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found");
         }
         return ResponseEntity.ok(addresses.get(id));
