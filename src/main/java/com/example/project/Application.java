@@ -36,12 +36,16 @@ public class Application {
 
     @GetMapping("/account/{id}")//GetMapping示例3：浏览器输入http://localhost:8080/account/1可以看到传给前端的结果，这个无default value，根据用户编号查看对应用户信息
     @ResponseBody//ResponseBody将Client_account对象转换为json格式，更方便数据对接
-    public Client_account getClientById(@PathVariable int id) {
-        return clients.get(id);//返回client对象转json
+    public Client_account_response getClientById(@PathVariable int id) {
+        Client_account client = clients.get(id);
+        if(client==null){
+            return new Client_account_response("fail", null);
+        }
+        return new Client_account_response("success", client);
     }
     @GetMapping("/address/{id}")//GetMapping示例4：浏览器输入http://localhost:8080/address/1可以看到传给前端的结果。{}可以使变量id内嵌在网址中
     public ResponseEntity<Object> getAddressById(@PathVariable int id) {
-        if (id < 0 || id > addresses.size()) { //如果找不到，返回http错误404NOT_FOUND
+        if (addresses.get(id)==null) { //如果找不到，返回http错误404NOT_FOUND
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found");
         }
         return ResponseEntity.ok(addresses.get(id));//u如果responseEntity找到了，没有报错，就直接返回这个address的对象
