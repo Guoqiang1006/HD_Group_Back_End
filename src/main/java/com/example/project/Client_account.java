@@ -29,6 +29,17 @@ public class Client_account {
         Addresses.put(address.getId(),address);
         total_accounts++;
     }
+    public Client_account(int client_id,String user_name, String password, String birthday, String gender, String phone, String email, Address address) {
+        this.client_id=client_id;
+        this.user_name = user_name;
+        this.password = password;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.phone = phone;
+        this.email=email;
+        Addresses.put(address.getId(),address);
+        total_accounts++;
+    }
 
     @Override
     public String toString() {
