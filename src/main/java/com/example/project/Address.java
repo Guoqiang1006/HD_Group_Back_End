@@ -1,5 +1,10 @@
 package com.example.project;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "id", "longitude", "latitude","road_number", "road_name", "suburb", "postal_code", "house_area", "total_area" })
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class Address {
     private static int total_addresses=0;
     private int id;
@@ -15,6 +20,7 @@ public class Address {
         this.id=total_addresses+1;
         this.latitude = latitude;
         this.Longitude = longitude;
+        this.road_number=road_number;
         this.road_name = road_name;
         this.suburb = suburb;
         this.postal_code = postal_code;
@@ -25,6 +31,11 @@ public class Address {
 
     public static int getTotal_addresses() {
         return total_addresses;
+    }
+
+    @Override
+    public String toString() {
+        return id+","+latitude+","+road_number+","+road_name+","+suburb+","+postal_code+","+house_area+","+total_area;
     }
 
     public int getId() {
@@ -57,6 +68,10 @@ public class Address {
 
     public double getTotal_area() {
         return total_area;
+    }
+
+    public String getRoad_number(){
+        return road_number;
     }
 
 
