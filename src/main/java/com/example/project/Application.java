@@ -17,8 +17,10 @@ public class Application {
     public static void main(String[] args) {
         Address address=new Address("-34.42463749447153","150.8928590557678","W125/200","Crown St","Wollongong","NSW2500",90.00,100.00);
         Client_account client=new Client_account("Rick","Abc1234567","1999-05-17 00:00:00","Male","0493417283","chenguoqiangsg@gmail.com",address);
+
         addresses.put(address.getId(),address);
         clients.put(client.getClient_id(), client);
+
         System.out.println(client.getClient_id());
         SpringApplication.run(Application.class, args);
     }
