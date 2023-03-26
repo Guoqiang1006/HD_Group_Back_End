@@ -29,13 +29,12 @@ public class app_controller {
     }
 
     @GetMapping("/account/{id}")//GetMapping示例3：浏览器输入http://localhost:8080/account/1可以看到传给前端的结果，这个无default value，根据用户编号查看对应用户信息
-    @ResponseBody//ResponseBody将Client_account对象转换为json格式，更方便数据对接
     public Client_account_response getClientById(@PathVariable int id) {
-        Client_account client = clients.get(id);
-        if(client==null){
+        Client_account client = clients.get(id);//根据id查找account
+        if(client==null){//如果找不到，返回失败
             return new Client_account_response("fail", null);
         }
-        return new Client_account_response("success", client);
+        return new Client_account_response("success", client);//找到了就返回成功加client对象
     }
     @GetMapping("/address/{id}")//GetMapping示例4：浏览器输入http://localhost:8080/address/1可以看到传给前端的结果。{}可以使变量id内嵌在网址中
     public ResponseEntity<Object> getAddressById(@PathVariable int id) {
