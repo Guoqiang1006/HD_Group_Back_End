@@ -2,10 +2,11 @@ package com.example.project;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 
-@JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday", "gender", "phone", "email"})
+@JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday", "gender", "phone", "email","Addresses"})
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public class Client_account {
     private static int total_accounts=0;
@@ -101,5 +102,10 @@ public class Client_account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @ResponseBody
+    public HashMap<Integer,Address> getAddresses(){
+        return Addresses;
     }
 }
