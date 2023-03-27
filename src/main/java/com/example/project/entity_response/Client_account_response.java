@@ -1,4 +1,6 @@
-package com.example.project;
+package com.example.project.entity_response;
+
+import com.example.project.entity.Client_account;
 
 public class Client_account_response {
         private String status;
