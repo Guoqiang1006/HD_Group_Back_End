@@ -29,7 +29,7 @@ public class Address {
         total_addresses++;
     }
     public static void doNothing(){
-        System.out.println("do nothing");
+        System.out.println("do nothings");
     }
     public Address(int id, String latitude, String longitude, String road_number,String road_name, String suburb, String postal_code, double house_area, double total_area) {
         this.id=id;
