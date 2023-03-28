@@ -1,5 +1,6 @@
-package com.example.project;
+package com.example.project.entity;
 
+import com.example.project.entity.Address;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +19,7 @@ public class Client_account {
     private String gender;
     private String phone;
     private String email;
-    private HashMap<Integer,Address> Addresses=new HashMap<Integer,Address>();
+    private HashMap<Integer, Address> Addresses=new HashMap<Integer,Address>();
     public Client_account(String user_name, String password, String birthday, String gender, String phone, String email, Address address) {
         this.client_id=total_accounts+1;
         this.user_name = user_name;

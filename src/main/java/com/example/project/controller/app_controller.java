@@ -1,5 +1,8 @@
-package com.example.project;
+package com.example.project.controller;
 
+import com.example.project.entity.Address;
+import com.example.project.entity.Client_account;
+import com.example.project.entity_response.Client_account_response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +13,8 @@ import java.util.HashMap;
 @RestController
 public class app_controller {
 
-    private static HashMap<Integer,Client_account> clients = new HashMap<>();
-    private static HashMap<Integer,Address> addresses = new HashMap<>();
+    private static HashMap<Integer, Client_account> clients = new HashMap<>();
+    private static HashMap<Integer, Address> addresses = new HashMap<>();
 
     public app_controller(){
         Address address=new Address("-34.42463749447153","150.8928590557678","W125/200","Crown St","Wollongong","NSW2500",90.00,100.00);

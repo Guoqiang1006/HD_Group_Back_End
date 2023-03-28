@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
