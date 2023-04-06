@@ -1,6 +1,5 @@
 package com.example.project.entity;
 
-import com.example.project.entity.Address;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,9 +8,9 @@ import java.util.HashMap;
 
 @JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday", "gender", "phone", "email","Addresses"})
 @JsonInclude(JsonInclude.Include.ALWAYS)
-public class Client_account {
+public class ClientAccount {
     private static int total_accounts=0;
-    private int client_id;
+    private String client_id;
     private String user_name;
     private String membership_id=null;
     private String password;
@@ -19,19 +18,19 @@ public class Client_account {
     private String gender;
     private String phone;
     private String email;
-    private HashMap<Integer, Address> Addresses=new HashMap<Integer,Address>();
-    public Client_account(String user_name, String password, String birthday, String gender, String phone, String email, Address address) {
-        this.client_id=total_accounts+1;
+    private HashMap<String, Address> addresses =new HashMap<String,Address>();
+    public ClientAccount(String user_name, String password, String birthday, String gender, String phone, String email, Address address) {
+        this.client_id="c"+(total_accounts+1);
         this.user_name = user_name;
         this.password = password;
         this.birthday = birthday;
         this.gender = gender;
         this.phone = phone;
         this.email=email;
-        Addresses.put(address.getId(),address);
+        addresses.put(address.getId(),address);
         total_accounts++;
     }
-    public Client_account(int client_id,String user_name, String password, String birthday, String gender, String phone, String email, Address address) {
+    public ClientAccount(String client_id, String user_name, String password, String birthday, String gender, String phone, String email, Address address) {
         this.client_id=client_id;
         this.user_name = user_name;
         this.password = password;
@@ -39,7 +38,7 @@ public class Client_account {
         this.gender = gender;
         this.phone = phone;
         this.email=email;
-        Addresses.put(address.getId(),address);
+        addresses.put(address.getId(),address);
         total_accounts++;
     }
 
@@ -52,7 +51,7 @@ public class Client_account {
         return total_accounts;
     }
 
-    public int getClient_id() {
+    public String getClient_id() {
         return client_id;
     }
 
@@ -85,7 +84,7 @@ public class Client_account {
     }
 
     public Address getAddress(int id) {
-        return Addresses.get(id);
+        return addresses.get(id);
     }
 
 
@@ -106,7 +105,7 @@ public class Client_account {
     }
 
     @ResponseBody
-    public HashMap<Integer,Address> getAddresses(){
-        return Addresses;
+    public HashMap<String,Address> getAddresses(){
+        return addresses;
     }
 }

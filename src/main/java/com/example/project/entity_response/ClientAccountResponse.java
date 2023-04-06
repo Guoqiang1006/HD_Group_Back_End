@@ -1,12 +1,12 @@
 package com.example.project.entity_response;
 
-import com.example.project.entity.Client_account;
+import com.example.project.entity.ClientAccount;
 
-public class Client_account_response {
+public class ClientAccountResponse {
         private String status;
-        private Client_account client;
+        private ClientAccount client;
 
-        public Client_account_response(String status, Client_account client) {
+        public ClientAccountResponse(String status, ClientAccount client) {
             this.status = status;
             this.client = client;
         }
@@ -19,11 +19,11 @@ public class Client_account_response {
             this.status = status;
         }
 
-        public Client_account getClient() {
+        public ClientAccount getClient() {
             return client;
         }
 
-        public void setClient(Client_account client) {
+        public void setClient(ClientAccount client) {
             this.client = client;
         }
 }

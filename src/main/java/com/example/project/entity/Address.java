@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.ALWAYS)//初始化内容为空时json传递null
 public class Address {
     private static int total_addresses=0;
-    private int id;
+    private String id;
     private String latitude;
     private String Longitude;
     private String road_name;
@@ -17,7 +17,7 @@ public class Address {
     private double house_area;
     private double total_area;
     public Address(String latitude, String longitude, String road_number,String road_name, String suburb, String postal_code, double house_area, double total_area) {
-        this.id=total_addresses+1;
+        this.id="ad"+(total_addresses+1);
         this.latitude = latitude;
         this.Longitude = longitude;
         this.road_number=road_number;
@@ -31,7 +31,7 @@ public class Address {
     public static void doNothing(){
         System.out.println("do nothings");
     }
-    public Address(int id, String latitude, String longitude, String road_number,String road_name, String suburb, String postal_code, double house_area, double total_area) {
+    public Address(String id, String latitude, String longitude, String road_number,String road_name, String suburb, String postal_code, double house_area, double total_area) {
         this.id=id;
         this.latitude = latitude;
         this.Longitude = longitude;
@@ -53,7 +53,7 @@ public class Address {
         return id+","+latitude+","+road_number+","+road_name+","+suburb+","+postal_code+","+house_area+","+total_area;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
