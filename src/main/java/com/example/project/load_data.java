@@ -98,8 +98,6 @@ public class load_data {
                 }
         }
 
-
-
         private Date parseDate(String str) throws ParseException {
             SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
             isoFormat.setTimeZone(TimeZone.getTimeZone("UTC"));

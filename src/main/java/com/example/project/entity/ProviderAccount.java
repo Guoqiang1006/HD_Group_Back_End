@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
 import java.util.HashMap;
 
-@JsonPropertyOrder({ "provider_id", "user_name", "membership_id","password", "birthday", "gender", "phone", "email","addresses","pest_removal","weeding","oven_repairs","fence_installation","tree_removal","roof_cleaning"})
+@JsonPropertyOrder({ "provider_id", "user_name", "membership_id","password", "birthday", "gender", "phone", "email","addresses","pest_removal","weeding","oven_repairs","fence_installation","tree_removal","roof_cleaning","wallet"})
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public class ProviderAccount {
     private static int total_providers =0;
@@ -129,5 +129,8 @@ public class ProviderAccount {
 
     public void setWallet(Wallet wallet){
         this.wallet=wallet;
+    }
+    public Wallet getWallet(){
+        return wallet;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
 import java.util.HashMap;
 
-@JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday", "wallet","gender", "phone", "email","addresses"})
+@JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday","gender", "phone", "email","addresses","wallet"})
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public class ClientAccount {
     private static int total_clients = 0;
