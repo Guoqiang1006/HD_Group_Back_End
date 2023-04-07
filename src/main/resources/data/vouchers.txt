@@ -1,0 +1,3 @@
+v1||client||onetime||WelcomeClient30||30.00||Welcome new. Only available for client pay-by-use.
+v2||client||subscription||WelcomeClient200||200.00||Welcome new. Only available for client subscription.
+v3||provider||subscription||WelcomeService150||150.00||Welcome new. Only available for provider pay-by-use.

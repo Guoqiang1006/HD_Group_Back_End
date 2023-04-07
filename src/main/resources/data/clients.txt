@@ -1,0 +1,2 @@
+c1||Rick||m1||Abc1234567||1999-05-17 00:00:00||Male||0493417283||chenguoqiangsg@gmail.com||ad1
+c2||Kevin||null||Abc1234567||1992-10-12 00:00:00||Female||0429356782||13601757763@163.com||ad3,ad4
