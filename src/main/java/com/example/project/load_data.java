@@ -27,6 +27,10 @@ public class load_data {
             readAddresses();
             readVouchers();
             readWallets();
+
+            readPayments();
+            readMemberships();
+            readOrders();
         }
 
         private void readClients() throws IOException, ParseException {
@@ -49,7 +53,7 @@ public class load_data {
             }
         }
 
-        private void readAddresses() throws IOException, ParseException {
+        private void readAddresses() throws IOException {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/addresses.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -68,7 +72,7 @@ public class load_data {
             }
         }
 
-        private void readVouchers() throws IOException, ParseException {
+        private void readVouchers() throws IOException {
                 BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/vouchers.txt"));
                 String line;
                 while ((line = reader.readLine()) != null){
@@ -96,6 +100,45 @@ public class load_data {
                         wallets.put(parts[0],wallet);
                     }
                 }
+        }
+
+        public void readPayments() throws IOException, ParseException {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/payments.txt"));
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] parts = line.split("\\|\\|");
+                Payment payment =new Payment(parts[0],parts[1],Double.parseDouble(parts[2]),parseDate(parts[3]));
+                payments.put(parts[0],payment);
+            }
+        }
+
+        public void readMemberships() throws IOException, ParseException {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/members.txt"));
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] parts = line.split("\\|\\|");
+                if (parts[0].charAt(0) == 'c'){
+                    ClientAccount client=clients.get(parts[0]);
+                    Membership membership = new Membership(parts[0],parts[1],parts[2],parseDate(parts[3]),Double.parseDouble(parts[4]),parts[5],parts[6]);
+                    client.setMembership(membership);
+                    memberships.put(parts[0],membership);
+                }
+                else{
+                    ProviderAccount provider=providers.get(parts[0]);
+                    Membership membership = new Membership(parts[0],parts[1],parts[2],parseDate(parts[3]),Double.parseDouble(parts[4]),parts[5],parts[6]);
+                    provider.setMembership(membership);
+                    memberships.put(parts[0],membership);
+                }
+            }
+        }
+        public void readOrders() throws IOException, ParseException {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/orders.txt"));
+            String line;
+            while ((line = reader.readLine())!=null){
+                String[] parts = line.split("\\|\\|");
+                Order order = new Order(parts[0],parts[1],clients.get(parts[2]),providers.get(parts[3]),addresses.get(parts[4]),Integer.parseInt(parts[5]),parseDate(parts[6]),parseDate(parts[7]),parseDate(parts[8]),parseDate(parts[9]),Double.parseDouble(parts[10]),payments.get(parts[11]),vouchers.get(parts[12]),parts[13]);
+                orders.put(parts[0],order);
+            }
         }
 
         private Date parseDate(String str) throws ParseException {

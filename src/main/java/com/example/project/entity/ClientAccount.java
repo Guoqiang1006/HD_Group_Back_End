@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
 import java.util.HashMap;
 
-@JsonPropertyOrder({ "client_id", "user_name", "membership_id","password", "birthday","gender", "phone", "email","addresses","wallet"})
+@JsonPropertyOrder({ "client_id", "user_name", "membership","password", "birthday","gender", "phone", "email","addresses","wallet"})
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public class ClientAccount {
     private static int total_clients = 0;
     private String client_id;
     private String user_name;
-    private String membership_id=null;
+    private Membership membership=null;
     private String password;
     private Date birthday;
     private String gender;
@@ -50,7 +50,7 @@ public class ClientAccount {
 
     @Override
     public String toString() {
-        return client_id+","+user_name+","+membership_id+","+birthday+","+gender+","+phone+","+email;
+        return client_id+","+user_name;
     }
 
     public static int getTotal_clients() {
@@ -69,8 +69,11 @@ public class ClientAccount {
         return user_name;
     }
 
-    public String getMembership_id() {
-        return membership_id;
+    public Membership getMembership() {
+        return membership;
+    }
+    public void setMembership(Membership membership){
+        this.membership=membership;
     }
 
     public String getPassword() {

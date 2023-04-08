@@ -16,6 +16,10 @@ public class App_Controller {
     public static HashMap<String, Address> addresses = new HashMap<>();
     public static HashMap<String, Voucher> vouchers = new HashMap<>();
     public static HashMap<String, Wallet> wallets = new HashMap<>();
+    public static HashMap<String, Payment> payments = new HashMap<>();
+    public static HashMap<String, Membership> memberships = new HashMap<>();
+
+    public static HashMap<String, Order> orders = new HashMap<>();
 
     public App_Controller() throws ParseException, IOException {
         load_data data=new load_data();

@@ -12,7 +12,6 @@ import static com.example.project.controller.App_Controller.vouchers;
 @RestController
 @RequestMapping("/voucher")
 public class VoucherController {
-
     @GetMapping("/{id}")
     public VoucherResponse getVouchersById(@PathVariable String id) {
         Voucher voucher =vouchers.get(id);//根据id查找voucher
