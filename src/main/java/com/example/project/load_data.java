@@ -27,7 +27,6 @@ public class load_data {
             readAddresses();
             readVouchers();
             readWallets();
-
             readPayments();
             readMemberships();
             readOrders();
@@ -121,13 +120,13 @@ public class load_data {
                     ClientAccount client=clients.get(parts[0]);
                     Membership membership = new Membership(parts[0],parts[1],parts[2],parseDate(parts[3]),Double.parseDouble(parts[4]),parts[5],parts[6]);
                     client.setMembership(membership);
-                    memberships.put(parts[0],membership);
+                    memberships.put(parts[1],membership);
                 }
                 else{
                     ProviderAccount provider=providers.get(parts[0]);
                     Membership membership = new Membership(parts[0],parts[1],parts[2],parseDate(parts[3]),Double.parseDouble(parts[4]),parts[5],parts[6]);
                     provider.setMembership(membership);
-                    memberships.put(parts[0],membership);
+                    memberships.put(parts[1],membership);
                 }
             }
         }
@@ -136,8 +135,14 @@ public class load_data {
             String line;
             while ((line = reader.readLine())!=null){
                 String[] parts = line.split("\\|\\|");
-                Order order = new Order(parts[0],parts[1],clients.get(parts[2]),providers.get(parts[3]),addresses.get(parts[4]),Integer.parseInt(parts[5]),parseDate(parts[6]),parseDate(parts[7]),parseDate(parts[8]),parseDate(parts[9]),Double.parseDouble(parts[10]),payments.get(parts[11]),vouchers.get(parts[12]),parts[13]);
+                Order order;
+                if(parts[11].charAt(0)=='p'){
+                    order = new Order(parts[0],parts[1],clients.get(parts[2]),providers.get(parts[3]),addresses.get(parts[4]),Integer.parseInt(parts[5]),parseDate(parts[6]),parseDate(parts[7]),parseDate(parts[8]),parseDate(parts[9]),Double.parseDouble(parts[10]),payments.get(parts[11]),vouchers.get(parts[12]),parts[13]);
+                }else {
+                    order = new Order(parts[0], parts[1], clients.get(parts[2]), providers.get(parts[3]), addresses.get(parts[4]), Integer.parseInt(parts[5]), parseDate(parts[6]), parseDate(parts[7]), parseDate(parts[8]), parseDate(parts[9]), Double.parseDouble(parts[10]), memberships.get(parts[11]), vouchers.get(parts[12]), parts[13]);
+                }
                 orders.put(parts[0],order);
+                System.out.println(parts[0]);
             }
         }
 

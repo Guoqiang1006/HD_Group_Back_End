@@ -30,5 +30,31 @@ public class Membership {
         this.payment=payments.get(pay_id);
     }
 
+    public String getAccount_id() {
+        return account_id;
+    }
 
+    public String getMembership_id() {
+        return membership_id;
+    }
+
+    public String getAccount_type() {
+        return account_type;
+    }
+
+    public Date getExpire_date() {
+        return expire_date;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
 }

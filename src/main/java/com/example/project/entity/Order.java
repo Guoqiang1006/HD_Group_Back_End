@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Date;
 import java.util.Objects;
 
-@JsonPropertyOrder({"order_id", "type", "client", "provider", "address", "service_time", "time_order", "time_appointment", "time_start", "time_finish", "amount", "pay", "voucher", "status" })//初始化json排列方法
+@JsonPropertyOrder({"order_id", "type", "client", "provider", "address", "service_time", "time_order", "time_appointment", "time_start", "time_finish", "amount", "pay", "membership", "voucher", "status" })//初始化json排列方法
 @JsonInclude
 public class Order {
     //order_id||type||client||provider||address_id||service_time(hours)||time_order||time_appointment||time_start||time_finish||amount||pay#||voucher||status
@@ -21,14 +21,11 @@ public class Order {
     private Date time_start;
     private Date time_finish;
     private double amount;
-    private Payment pay=null;
+    private Payment pay;
+    private Membership membership;
     private Voucher voucher;
     private String status;
 
-    enum pay{
-        Payment,
-        Membership,
-    }
     enum status{
         Awaiting,
         servicing,
@@ -48,6 +45,22 @@ public class Order {
         this.time_finish = time_finish;
         this.amount = amount;
         this.pay = pay;
+        this.voucher = voucher;
+        this.status = status;
+    }
+    public Order(String order_id, String type, ClientAccount client, ProviderAccount provider, Address address, int service_time, Date time_order, Date time_appointment, Date time_start, Date time_finish, double amount, Membership membership, Voucher voucher, String status) {
+        this.order_id = order_id;
+        this.type = type;
+        this.client = client;
+        this.provider = provider;
+        this.address = address;
+        this.service_time = service_time;
+        this.time_order = time_order;
+        this.time_appointment = time_appointment;
+        this.time_start = time_start;
+        this.time_finish = time_finish;
+        this.amount = amount;
+        this.membership = membership;
         this.voucher = voucher;
         this.status = status;
     }
@@ -98,6 +111,10 @@ public class Order {
 
     public Payment getPay() {
         return pay;
+    }
+
+    public Membership getMembership() {
+        return membership;
     }
 
     public Voucher getVoucher() {
