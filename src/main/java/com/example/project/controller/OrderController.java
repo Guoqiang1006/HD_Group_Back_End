@@ -12,7 +12,7 @@ import static com.example.project.controller.App_Controller.orders;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")//http://localhost:8080/order/o1
     public OrderResponse getOrdersById(@PathVariable String id) {
         Order order=orders.get(id);//根据id查找order
         if(order==null){//如果找不到，返回失败

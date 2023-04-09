@@ -9,7 +9,7 @@ import static com.example.project.controller.App_Controller.providers;
 @RestController
 @RequestMapping("/provider")
 public class ProviderController {
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")//http://localhost:8080/provider/p1
     public ProviderAccountResponse getProviderById(@PathVariable String id) {
         ProviderAccount provider = providers.get(id);//根据id查找account
         if(provider==null){//如果找不到，返回失败

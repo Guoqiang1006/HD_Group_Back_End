@@ -12,7 +12,7 @@ import static com.example.project.controller.App_Controller.payments;
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")//http://localhost:8080/payment/pay1
     public PaymentResponse getPaymentById(@PathVariable String id) {
         Payment payment = payments.get(id);//根据id查找payment
         if(payment==null){//如果找不到，返回失败

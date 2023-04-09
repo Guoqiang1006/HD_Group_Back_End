@@ -12,7 +12,7 @@ import static com.example.project.controller.App_Controller.vouchers;
 @RestController
 @RequestMapping("/voucher")
 public class VoucherController {
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")//http://localhost:8080/voucher/v1
     public VoucherResponse getVouchersById(@PathVariable String id) {
         Voucher voucher =vouchers.get(id);//根据id查找voucher
         if(voucher==null){//如果找不到，返回失败
