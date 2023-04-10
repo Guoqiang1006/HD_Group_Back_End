@@ -22,8 +22,6 @@ public class ClientController {
             return new ClientAccountResponse("fail", null);
         }
         return new ClientAccountResponse("success", client);//找到了就返回成功加client对象
-        /*http://localhost:8080/client/c1
-        * */
     }
 
 }

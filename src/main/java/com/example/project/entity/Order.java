@@ -27,7 +27,7 @@ public class Order {
     private String status;
 
     enum status{
-        Awaiting,
+        awaiting,
         servicing,
         serviced
     }

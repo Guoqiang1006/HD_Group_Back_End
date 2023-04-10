@@ -13,7 +13,7 @@ import static com.example.project.controller.App_Controller.memberships;
 @RequestMapping("/membership")
 public class MemberController {
     @GetMapping("/{id}")//http://localhost:8080/membership/m1
-    public MembershipResponse getPaymentById(@PathVariable String id) {
+    public MembershipResponse getMemberById(@PathVariable String id) {
         Membership membership = memberships.get(id);//根据id查找membership
         if(membership==null){//如果找不到，返回失败
             return new MembershipResponse("fail", null);

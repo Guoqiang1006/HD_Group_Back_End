@@ -142,7 +142,6 @@ public class load_data {
                     order = new Order(parts[0], parts[1], clients.get(parts[2]), providers.get(parts[3]), addresses.get(parts[4]), Integer.parseInt(parts[5]), parseDate(parts[6]), parseDate(parts[7]), parseDate(parts[8]), parseDate(parts[9]), Double.parseDouble(parts[10]), memberships.get(parts[11]), vouchers.get(parts[12]), parts[13]);
                 }
                 orders.put(parts[0],order);
-                System.out.println(parts[0]);
             }
         }
 

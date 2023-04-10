@@ -20,7 +20,7 @@ public class ClientAccount {
     private String phone;
     private String email;
     private Wallet wallet;
-    private HashMap<String, Address> addresses =new HashMap<String,Address>();
+    private HashMap<String, Address> addresses =new HashMap<>();
     public ClientAccount(String user_name, String password, Date birthday, String gender, String phone, String email) {
         this.client_id="c"+(total_clients +1);
         this.user_name = user_name;

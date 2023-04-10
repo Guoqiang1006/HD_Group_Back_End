@@ -20,7 +20,7 @@ public class ProviderAccount {
     private String phone;
     private String email;
     private Wallet wallet;
-    private HashMap<String, Address> addresses =new HashMap<String,Address>();
+    private HashMap<String, Address> addresses =new HashMap<>();
     private boolean pest_removal = false;
     private boolean weeding = false;
     private boolean oven_repairs = false;
