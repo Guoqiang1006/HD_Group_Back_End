@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
 import java.util.HashMap;
 
-@JsonPropertyOrder({ "provider_id", "user_name", "membership","password", "birthday", "gender", "phone", "email","addresses","pest_removal","weeding","oven_repairs","fence_installation","tree_removal","roof_cleaning","wallet"})
+@JsonPropertyOrder({ "provider_id", "user_name", "membership","password", "birthday", "gender", "phone", "email","addresses","pest_removal","weeding","oven_repairs","fence_installation","tree_removal","roof_cleaning","wallet","reviews"})
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public class ProviderAccount {
     private static int total_providers =0;
@@ -27,6 +27,7 @@ public class ProviderAccount {
     private boolean fence_installation = false;
     private boolean tree_removal = false;
     private boolean roof_cleaning = false;
+    public HashMap<String,Review> reviews = new HashMap<>();
 
     public ProviderAccount(String user_name, String password, Date birthday, String gender, String phone, String email){
         this.provider_id="p"+(total_providers +1);
@@ -135,5 +136,8 @@ public class ProviderAccount {
     }
     public Wallet getWallet(){
         return wallet;
+    }
+    public void addReview(String orderId,Review review){
+        reviews.put(orderId,review);
     }
 }

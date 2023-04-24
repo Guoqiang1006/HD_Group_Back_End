@@ -30,6 +30,8 @@ public class load_data {
             readPayments();
             readMemberships();
             readOrders();
+
+            readReviews();
         }
 
         private void readClients() throws IOException, ParseException {
@@ -142,6 +144,20 @@ public class load_data {
                     order = new Order(parts[0], parts[1], clients.get(parts[2]), providers.get(parts[3]), addresses.get(parts[4]), Integer.parseInt(parts[5]), parseDate(parts[6]), parseDate(parts[7]), parseDate(parts[8]), parseDate(parts[9]), Double.parseDouble(parts[10]), memberships.get(parts[11]), vouchers.get(parts[12]), parts[13]);
                 }
                 orders.put(parts[0],order);
+            }
+        }
+
+        public void readReviews() throws IOException, ParseException {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/reviews.txt"));
+            String line;
+            while ((line = reader.readLine())!=null){
+                String[] parts = line.split("\\|\\|");
+                Review review = new Review(Integer.parseInt(parts[1]),parts[2],parseDate(parts[3]));
+                for(Order order:orders.values()){
+                    if(order.getOrder_id().equals(parts[0])){
+                        order.getProvider().addReview(parts[0],review);
+                    }
+                }
             }
         }
 

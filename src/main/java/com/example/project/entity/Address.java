@@ -3,7 +3,7 @@ package com.example.project.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"longitude", "latitude","road_number", "road_name", "suburb", "postal_code", "house_area", "total_area" })//初始化json排列方法
+@JsonPropertyOrder({"id","longitude", "latitude","road_number", "road_name", "suburb", "postal_code", "house_area", "total_area" })//初始化json排列方法
 @JsonInclude(JsonInclude.Include.ALWAYS)//初始化内容为空时json传递null
 public class Address {
     private static int total_addresses=0;
