@@ -124,4 +124,9 @@ public class Order {
     public String getStatus() {
         return status;
     }
+
+    public void setProvider(ProviderAccount provider) {
+        this.provider= provider;
+    }
+
 }

@@ -140,4 +140,7 @@ public class ProviderAccount {
     public void addReview(String orderId,Review review){
         reviews.put(orderId,review);
     }
+    public HashMap<String,Review> getReview(){
+        return reviews;
+    }
 }
