@@ -109,7 +109,7 @@ public class load_data {
             while ((line = reader.readLine()) != null){
                 String[] parts = line.split("\\|\\|");
                 Payment payment =new Payment(parts[0],parts[1],Double.parseDouble(parts[2]),parseDate(parts[3]));
-                payments.put(parts[0],payment);
+                payments.put(parts[0],payment)
             }
         }
 
