@@ -9,7 +9,7 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/client")
 public class UserSuopportController {
-    public HashMap<String, UserSupport> getFeednackList(){
+    public HashMap<String, UserSupport> getFeedbackList(){
         return null;
     }
     public UserSupport selectUserSupport(String id){

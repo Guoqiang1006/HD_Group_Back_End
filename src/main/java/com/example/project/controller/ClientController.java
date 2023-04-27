@@ -79,7 +79,7 @@ public class ClientController {
     public void payMember(String member_id){
 
     }
-    public void oayByOnce(String account_id){
+    public void payByOnce(String account_id){
 
     }
     public void processService(String order_id){
