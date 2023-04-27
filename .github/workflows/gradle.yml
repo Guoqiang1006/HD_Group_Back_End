@@ -34,3 +34,8 @@ jobs:
 
     - name: Test with Gradle
       run: ./gradlew test
+      
+    - name: Run application
+      run: ./gradlew run
+      env:
+        SPRING_PROFILES_ACTIVE: "dev"
