@@ -46,6 +46,7 @@ public class ClientAccount {
         }
         total_clients++;
     }
+    public ClientAccount(){}
 
 
     @Override

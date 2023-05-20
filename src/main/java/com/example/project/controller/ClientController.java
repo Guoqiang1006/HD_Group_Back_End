@@ -29,6 +29,17 @@ public class ClientController {
         }
         return new ClientAccountResponse("success", client);//找到了就返回成功加client对象
     }
+    @PostMapping("/login")
+    public String login(@RequestBody ClientAccount loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+        for (ClientAccount client : clients.values()) {
+            if (client.getEmail().equals(email) && client.getPassword().equals(password)) {
+                return "Login success!";
+            }
+        }
+        return "Login failed!";
+    }
 
     //new 25/4
 
