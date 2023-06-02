@@ -54,7 +54,8 @@ public class load_data {
             }
         }
 
-        private void readAddresses() throws IOException {
+
+    private void readAddresses() throws IOException {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/addresses.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
